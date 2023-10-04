@@ -1,0 +1,81 @@
+package in.mindcraft.controller;
+
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import in.mindcraft.dao.UserDao;
+import in.mindcraft.pojos.User;
+
+//@Controller
+//public class UserController {
+//
+//    private UserDao userdao = new UserDao();
+//
+//    // Submit data
+//    @RequestMapping(value = "/api/users", method = RequestMethod.POST)
+//    public void addUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+//        String username = request.getParameter("username");
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+//
+//        User user = new User(username, email, password);
+//
+//        try {
+//            if (userdao.addUser(user)) {
+//                System.out.println("User added successfully");
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Failed to add");
+//        }
+//    }
+//
+//    // Add other controller methods here
+//
+//}
+
+
+
+
+
+
+
+
+
+
+
+@Controller
+@CrossOrigin(origins = "http://localhost:4200") // Replace with your Angular app's URL
+public class UserController {
+
+    private final UserDao userdao;
+
+    @Autowired
+    public UserController(UserDao userdao) {
+        this.userdao = userdao;
+    }
+
+    // Submit data
+    @RequestMapping("/api/users")
+    public void addUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        User user = new User(username, email, password);
+
+        try {
+            if (userdao.addUser(user)) {
+                System.out.println("User added successfully");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to add");
+        }
+    }
+
+
+}
+

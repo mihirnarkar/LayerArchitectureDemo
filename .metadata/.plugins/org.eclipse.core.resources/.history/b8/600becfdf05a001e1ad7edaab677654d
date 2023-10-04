@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="AuthenticationSystem">
+        <property name="context-root" value="AuthenticationSystem"/>
+        <property name="java-output-path" value="/AuthenticationSystem/build/classes"/>
+    </wb-module>
+</project-modules>
